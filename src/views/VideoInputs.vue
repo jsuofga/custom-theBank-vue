@@ -5,6 +5,19 @@
                <v-row id = "rx-label" class='d-flex justify-center pa-9 myCol'>
                     Select Video for Display - {{stateStore.rxSelectedLabel}}
                </v-row>
+
+               <v-snackbar
+                    v-model="stateStore.snackbar"
+                    :timeout="3000"
+                    color="blue"
+               >    
+                    {{ ` ${stateStore.rxSelectedLabel} to ${stateStore.sourceList[parseInt(stateStore.txSelected)-1]} `}}
+
+                    <template>
+                         <v-btn color="white" variant="text"></v-btn>
+                    </template>
+               </v-snackbar>
+               
                <!-- Source 1-4 -->
                <v-row class="myRow d-flex align-center">
                     <v-col  class ="d-flex justify-center pl-0">

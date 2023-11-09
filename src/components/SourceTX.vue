@@ -32,6 +32,8 @@ export default {
         _txID = "0"+_txID
       }
       this.stateStore.switchRX(_txID)
+      this.stateStore.txSelected = _txID
+      this.stateStore.snackbar = true
     }
   },
 };

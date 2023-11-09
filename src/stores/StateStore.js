@@ -12,7 +12,10 @@ export const useStateStore = defineStore('stateStore', {
         page: '/', 
         rxSelected: '1',
         rxSelectedLabel: '',
+        txSelected:'1',
         mergeType:'0', 
+        isAuthenticated:false,
+        snackbar:false,
         nodeQueryList_dump:[],
         nodeQueryList_ip:[],
         nodeQueryList_rx_ip:[],
@@ -69,8 +72,11 @@ export const useStateStore = defineStore('stateStore', {
         },
 
          switchRX(_txID){
-          console.log(`Type is ${this.mergeType}`)
-          console.log(`RX is ${this.rxSelected}`)
+          
+          // console.log(`Type is ${this.mergeType}`)
+          // console.log(`RX is ${this.rxSelected}`)
+          console.log(_txID)
+
           if(this.mergeType =='1'){  // Single TV mode
              fetch(`http://172.31.3.${this.rxSelected}/cgi-bin/query.cgi?cmd=vw:off`);
              fetch(`http://172.31.3.${this.rxSelected}/cgi-bin/query.cgi?cmd=rxswitch:${_txID}`)
