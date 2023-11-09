@@ -3,7 +3,7 @@
         <div class="update">
                 <h5> Update dist.tar file</h5>
                     <div v-if= "showFileButton"  id="input">
-                    <input v-on:change= "fileSelect" id="file-select-button" type="file" >
+                    <input v-on:change= "fileSelect" id="file-select-button" type="file" accept= ".tar" >
                 </div>
 
                 <div v-if= "showUploadButton" class="field center-align">

@@ -1,4 +1,5 @@
 // Composables
+import { useStateStore} from '@/stores/StateStore'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -69,6 +70,28 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "home" */ '@/views/Update.vue'),
+        beforeEnter: (to, from, next) => {
+          const  StateStore = useStateStore(); // <-- passing Pinia instance directly
+          if (to.name !== 'AccessControl' && !StateStore.isAuthenticated) {
+            next({ name: 'AccessControl' });
+          } else {
+            next();
+          }
+        }
+      },
+    ],
+  },
+  {
+    path: '/accesscontrol',
+    component: () => import('@/layouts/default/Default.vue'),
+    children: [
+      {
+        path: '/accesscontrol',
+        name: 'AccessControl',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "home" */ '@/views/AccessControl.vue'),
       },
     ],
   },

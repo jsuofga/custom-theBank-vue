@@ -13,6 +13,7 @@ export const useStateStore = defineStore('stateStore', {
         rxSelected: '1',
         rxSelectedLabel: '',
         mergeType:'0', 
+        isAuthenticated:false,
         nodeQueryList_dump:[],
         nodeQueryList_ip:[],
         nodeQueryList_rx_ip:[],
